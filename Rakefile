@@ -15,9 +15,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "bioportal-client"
   gem.homepage = "http://github.com/balhoff/bioportal-client"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.summary = %Q{Access ontologies and term information at the NCBO BioPortal}
   gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "jim@balhoff.org"
+  gem.email = "balhoff@nescent.org"
   gem.authors = ["Jim Balhoff"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
