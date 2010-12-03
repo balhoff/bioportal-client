@@ -26,9 +26,7 @@ class TestBioportalClient < Test::Unit::TestCase
    
    should "find terms only in the TAO" do
      client = Bioportal::BioportalClient.new(EMAIL)
-     tao = Ontology.new
-     tao.id = TAO_ID
-     client.search("basihyal", [tao]).each{|term| assert term.ontology.id == TAO_ID}
+     client.search("basihyal", [TAO_ID]).each{|term| assert term.ontology.id == TAO_ID}
    end
    
    should "retrieve info about the basihyal term from TAO" do
@@ -39,7 +37,7 @@ class TestBioportalClient < Test::Unit::TestCase
      term = Term.new
      term.ontology = ontology
      term.id = "http://purl.org/obo/owl/TAO#TAO_0000316"
-     rich_term = client.get_rich_term(term)
+     rich_term = client.get_rich_term_for_term(term)
      assert rich_term.label = "basihyal"
      assert rich_term.definition = "Replacement bone that is median and is the anterior-most bone of the ventral hyoid arch."
      assert rich_term.synonyms.include?("glossohyal")
