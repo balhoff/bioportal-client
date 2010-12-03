@@ -39,6 +39,16 @@ module Bioportal
       xml_doc.elements.collect("success/data/page/contents/searchResultList/searchBean") {|search_bean| Term.new(search_bean) }
     end
     
+    def get_rich_term(term)
+      params = {"email" => @email, "light" => "0", "norelations" => "0"}
+      params["conceptid"] = term.id
+      url = SERVICE_URI + "concepts/#{term.ontology.version_id}?" + params.to_url_params
+      xml_doc = REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body)
+      rich_term = RichTerm.new(xml_doc)
+      rich_term.ontology = term.ontology
+      return rich_term
+    end
+    
   end
   
 end
